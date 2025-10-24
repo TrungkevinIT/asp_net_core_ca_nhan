@@ -1,0 +1,96 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@section Scripts {
+	<script src="~/js/responsiveslides.min.js"></script>
+	<script type="text/javascript" src="~/js/jquery.flexisel.js"></script>
+	<script type="text/javascript" src="~/js/move-top.js"></script>
+	<script type="text/javascript" src="~/js/easing.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event){
+				event.preventDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},900);
+			});
+		});
+	</script>
+}
+
+<div id="cate" class="categories">
+	<div class="container">
+		<h3>CATEGORIES</h3>
+		<div class="categorie-grids">
+			@* <a asp-controller="Home" asp-action="Bicycles"> *@
+			<div class="col-md-4 cate-grid grid1">
+				<h4>FIXED / SINGLE SPEED</h4>
+				<p>Are you ready for the 27.5 Revloution ?</p>
+				<a class="store" asp-controller="Home" asp-action="Bicycles">GO TO STORE</a>
+			</div>
+			@* </a> *@
+			@* <a asp-controller="Home" asp-action="Bicycles"> *@
+			<div class="col-md-4 cate-grid grid2">
+				<h4>PREMIMUM SERIES</h4>
+				<p>Exclusive Bike Components</p>
+				<a class="store" asp-controller="Home" asp-action="Bicycles">GO TO STORE</a>
+			</div>
+			@* </a> *@
+			@* <a asp-controller="Home" asp-action="Bicycles"> *@
+			<div class="col-md-4 cate-grid grid3">
+				<h4>CITY BIKES</h4>
+				<p>Street Playground</p>
+				<a class="store" asp-controller="Home" asp-action="Bicycles">GO TO STORE</a>
+			</div>
+			@* </a> *@
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+<!--bikes-->
+<div class="bikes">
+	<h3>BIKES</h3>
+	<div class="bikes-grids">
+		<ul id="flexiselDemo1">
+			 @await Component.InvokeAsync("Bike")
+		</ul>
+		<script type="text/javascript">
+			 $(window).load(function() {
+			  $("#flexiselDemo1").flexisel({
+				visibleItems: 3,
+				animationSpeed: 1000,
+				autoPlay: true,
+				autoPlaySpeed: 3000,
+				pauseOnHover:true,
+				enableResponsiveBreakpoints: true,
+				responsiveBreakpoints: {
+					portrait: {
+						changePoint:480,
+						visibleItems: 1
+					},
+					landscape: {
+						changePoint:640,
+						visibleItems: 2
+					},
+					tablet: {
+						changePoint:768,
+						visibleItems: 3
+					}
+				}
+			});
+			});
+		</script>
+	</div>
+</div>
+<!---->
+<div class="contact">
+	<div class="container">
+		<h3>CONTACT US</h3>
+		<p>Please contact us for all inquiries and purchase options.</p>
+		<form>
+			<input type="text" placeholder="NAME" required="" />
+			<input type="text" placeholder="SURNAME" required="" />
+			<input class="user" type="text" placeholder="USER@DOMAIN.COM" required="" /><br />
+			<textarea placeholder="MESSAGE"></textarea>
+			<input type="submit" value="SEND" />
+		</form>
+	</div>
+</div>

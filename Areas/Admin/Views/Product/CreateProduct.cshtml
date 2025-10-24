@@ -1,0 +1,174 @@
+﻿@model BaiTapQuayVideo.Models.ProductImage
+@section Style{
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet" />
+}
+<h2 class="text-center mt-3 mb-4">Thêm sản phẩm mới</h2>
+
+<form asp-area="Admin" asp-action="PostWithImage" asp-controller="Product" method="post" enctype="multipart/form-data" class="container border p-4 rounded bg-light">
+
+    <div class="mb-3">
+        <label asp-for="ProductName" class="form-label">Tên sản phẩm</label>
+        <input asp-for="ProductName" class="form-control" placeholder="Nhập tên sản phẩm" />
+        <span asp-validation-for="ProductName" class="text-danger"></span>
+    </div>
+    <label class="form-label">URLIMG</label>
+    <input type="hidden" name="hf_num_ful" id="hf_num_ful" value="1" class="form-control" style="max-width:300px;">
+    <div class="mb-3" id="container_ful">
+        <div>
+            <input type="file" class="form-control" name="Images" style="max-width:300px; margin:5px 5px 5px 0; display: inline-block;">
+            <img src="#" alt="Alternate Text" style="max-width: 100px; max-height: 100px; display: none; vertical-align: middle;"/>
+            <button type="button" id="btn_delete_ful" class="btn btn-primary" onclick="Delete_Btn_Del(this)">-</button>
+        </div>
+    </div>
+    <div class="mb-3">
+        <button type="button" id="btn_add_ful" class="btn btn-primary">+</button>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Price" class="form-label">Giá gốc</label>
+        <input asp-for="Price" type="number" step="0.01" class="form-control" placeholder="Nhập giá gốc" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="PromotionPrice" class="form-label">Giá khuyến mãi</label>
+        <input asp-for="PromotionPrice" type="number" step="0.01" class="form-control" placeholder="Nhập giá khuyến mãi (nếu có)" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ProductDescription" class="form-label">Mô tả sản phẩm</label>
+        <textarea asp-for="ProductDescription" class="form-control" rows="3" placeholder="Nhập mô tả sản phẩm"></textarea>
+        <span asp-validation-for="ProductDescription" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="TagName" class="form-label">TagName</label>
+        <input asp-for="TagName" class="form-control" placeholder="Nhập TagName" />
+        <span asp-validation-for="TagName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="CategoryId" class="form-label">Category</label>
+        <input asp-for="CategoryId" type="number" class="form-control" placeholder="Nhập mã danh mục" />
+        <a asp-action="CreateCategory" asp-controller="Category">Them danh muc</a>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label d-block">ProductType</label>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" asp-for="ProductType" value="Bike" id="bike" />
+            <label class="form-check-label" for="bike">Bike</label>
+            
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" asp-for="ProductType" value="Part" id="part" />
+            <label class="form-check-label" for="part">Part</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" asp-for="ProductType" value="Accessories" id="accessories" />
+            <label class="form-check-label" for="accessories">Accessories</label>
+        </div>
+        <span asp-validation-for="ProductType" class="text-danger"></span>
+    </div>
+
+
+    <div class="mb-3">
+        <label asp-for="States" class="form-label">Trạng thái</label>
+        <select asp-for="States" class="form-select">
+            <option value="1">Đang bán</option>
+            <option value="0">Ngừng bán</option>
+            <option value="2">Hết hàng</option>
+            <option value="3">Ẩn</option>
+        </select>
+    </div>
+
+    <div class="text-center">
+        <button type="submit" class="btn btn-success px-4">
+            <i class="fa-solid fa-floppy-disk"></i>
+            Lưu sản phẩm
+        </button>
+        <a asp-area="Admin" asp-action="ProductManagement" asp-controller="Admin" class="btn btn-secondary ms-2">Quay lại</a>
+    </div>
+    
+</form>
+<script>
+    document.getElementById("btn_add_ful").onclick=function(){
+       
+        var container_ful=document.getElementById("container_ful");
+        var hf_num_ful=document.getElementById("hf_num_ful");
+        var child=document.createElement('input');
+        var div_child=document.createElement('div');
+        var img_ful=document.createElement('img');
+        var btn_del_div=document.createElement('button');
+        hf_num_ful.value=parseInt(hf_num_ful.value)+1;
+        child.setAttribute('name','Images');
+        child.setAttribute('id','ful_'+hf_num_ful.value);
+        child.setAttribute('type','file');
+        child.classList.add('form-control');
+        child.setAttribute('style','max-width:300px; margin:5px 5px 5px 0; display: inline-block;');
+        img_ful.setAttribute('src',"#");
+        img_ful.setAttribute('alt',"Alternate Text");
+        img_ful.setAttribute('style','max-width: 100px; max-height: 100px; display: none; vertical-align: middle;');
+        btn_del_div.setAttribute('type','button');
+        btn_del_div.setAttribute('id',"btn_delete_ful");
+        btn_del_div.classList.add('btn');
+        btn_del_div.classList.add('btn-primary');
+        btn_del_div.textContent='-';
+        div_child.appendChild(child);
+        div_child.appendChild(img_ful);
+        div_child.appendChild(btn_del_div);
+        container_ful.appendChild(div_child);
+        btn_del_div.onclick=function(){
+            Delete_Btn_Del(this);
+        }
+    }
+    document.getElementById("container_ful").addEventListener('change',function(e){
+        if(e.target.matches('input[type="file"]')){
+            const input=e.target;
+            const img=input.nextElementSibling;
+            const file = input.files[0];
+            const maxSize =2*1024*1024; // Giới hạn là 2MB (tính bằng bytes)
+
+            if (file && file.size > maxSize) {
+                // 1. Thông báo cho người dùng
+                alert("File quá lớn! Vui lòng chọn file dưới 2MB.");
+
+                // 2. Xóa file đã chọn khỏi input
+                input.value = '';
+
+                // 3. Ẩn ảnh preview
+                img.src = "#";
+                img.style.display = 'none';
+
+                // 4. Dừng xử lý
+                return;
+            }
+            if(input.files && input.files[0]){
+                img.src=URL.createObjectURL(input.files[0]);
+                img.style.display = 'inline-block';
+            }else
+            {
+                img.src="#";
+                img.style.display = 'none';
+            }
+        }
+
+    });
+    function Delete_Btn_Del(buttonElemnet){
+        var div_remote=buttonElemnet.parentElement;
+        var hf_num_ful=document.getElementById('hf_num_ful')
+        var count_div=parseInt(hf_num_ful.value);
+        if(count_div >1){
+            div_remote.remove();
+            hf_num_ful.value=count_div-1;
+        }else{
+            alert("Phải giữ lại ít nhất một ảnh.");
+        }
+
+    }
+</script>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

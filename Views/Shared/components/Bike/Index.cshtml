@@ -1,0 +1,32 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model IEnumerable<BaiTapQuayVideo.Models.Product>
+@* load san pham *@
+@foreach(var bike in Model)
+{
+    <li>
+        <img src="~/images/@bike.ImageUrl" alt="@bike.ProductName" />
+        <div class="bike-info">
+            <div class="model">
+                <h4>@bike.ProductName<span>$@bike.Price</span></h4>
+            </div>
+            <div class="model-info">
+                <select>
+                    <option value="volvo">OPTION</option>
+                    <option value="saab">Option</option>
+                    <option value="opel">Option</option>
+                    <option value="audi">Option</option>
+                </select>
+                <a asp-controller="Home" asp-action="Single">BUY</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="viw">
+            <a asp-controller="Home" asp-action="Single">Quick View</a>
+        </div>
+    </li>
+}

@@ -1,0 +1,28 @@
+﻿@model IEnumerable<BaiTapQuayVideo.Models.Categories> // danh sách Categories
+<h2 style="text-align: center">@ViewData["Title"]</h2>
+<button type="button" class="btn btn-success">
+    <a asp-area="Admin" asp-controller="Category" asp-action="CreateCategory"
+       style="color: white; font-weight: bold; text-decoration: none;">Create Product</a>
+</button>
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>CategoryId</th>
+            <th>CategoryName</th>
+            <th>States</th>
+            <th>Slug</th>
+        </tr>
+    </thead>
+    <tbody>
+        @* vòng lặp để hiện ra sách danh mục *@
+        @foreach (var sp in Model)
+        {
+            <tr>
+                <td>@sp.CategoryId</td>
+                <td>@sp.CategoryName</td>
+                <td>@sp.States</td>
+                <td>@sp.Slug</td>
+            </tr>
+        }
+    </tbody>
+</table>

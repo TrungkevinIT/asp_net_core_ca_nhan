@@ -1,0 +1,44 @@
+﻿@model BaiTapQuayVideo.Models.Categories
+@{
+    ViewData["Title"] = "Thêm danh mục";
+}
+<h2 class="text-center mt-3 mb-4">Thêm danh mục mới</h2>
+
+<form asp-action="CreateCategory" asp-controller="Category" method="post">
+    <div class="mb-3">
+        <label asp-for="CategoryName" class="form-label"></label>
+        <input asp-for="CategoryName" class="form-control" placeholder="Nhập tên danh mục..." />
+        <span asp-validation-for="CategoryName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Slug" class="form-label">Slug</label>
+        <input asp-for="Slug" class="form-control" placeholder="vd: xe-dap" />
+        <span asp-validation-for="Slug" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="States" class="form-label">Trạng thái</label>
+        <select asp-for="States" class="form-select">
+            <option value="1">Đang bán</option>
+            <option value="0">Ngừng bán</option>
+            <option value="2">Hết hàng</option>
+            <option value="3">Ẩn</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">Thêm danh mục</button>
+    <a asp-area="Admin" asp-controller="Product" asp-action="CreateProduct" class="btn btn-secondary mt-2">Quay lại</a>
+    @* nếu khác null thì truyền vào dữ liệu nếu thành công thì hiện ra chuỗi thêm sản phẩm thành công *@
+    @* nếu thất bại thì hiện ra chuỗi thêm sản phẩm thất bại. *@
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+    @* @if (ViewBag.Message != null) *@
+    @* { *@
+    @*     <div class="alert alert-info mt-4 text-center"> *@
+    @*         @ViewBag.Message *@
+    @*     </div> *@
+    @* } *@
+</form>

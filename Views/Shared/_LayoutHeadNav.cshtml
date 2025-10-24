@@ -1,0 +1,49 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<ul class="nav">
+	<li class="@(ViewBag.pageName=="Bicycles"?"active":"dropdown1")">
+		<a asp-controller="Home" asp-action="Bicycles">BICYCLES</a>
+		<ul class="dropdown2">
+			<li><a asp-controller="Home" asp-action="Bicycles">FIXED / SINGLE SPEED</a></li>
+			<li><a asp-controller="Home" asp-action="Bicycles">CITY BIKES</a></li>
+			<li><a asp-controller="Home" asp-action="Bicycles">PREMIMUN SERIES</a></li>
+		</ul>
+	</li>
+	<li class="@(ViewBag.pageName=="Parts"?"active":"dropdown1")">
+		<a asp-controller="Home" asp-action="Parts">PARTS</a>
+		<ul class="dropdown2">
+			<li><a asp-controller="Home" asp-action="Parts">CHAINS</a></li>
+			<li><a asp-controller="Home" asp-action="Parts">TUBES</a></li>
+			<li><a asp-controller="Home" asp-action="Parts">TIRES</a></li>
+			<li><a asp-controller="Home" asp-action="Parts">DISC BREAKS</a> </li>
+		</ul>
+	</li>
+	<li class="@(ViewBag.pageName=="Accessories"?"active":"dropdown1")">
+		<a asp-controller="Home" asp-action="Accessories">ACCESSORIES</a>
+		<ul class="dropdown2">
+			<li><a asp-controller="Home" asp-action="Accessories">LOCKS</a></li>
+			<li><a asp-controller="Home" asp-action="Accessories">HELMETS</a></li>
+			<li><a asp-controller="Home" asp-action="Accessories">ARM COVERS</a></li>
+			<li><a asp-controller="Home" asp-action="Accessories">JERSEYS</a></li>
+		</ul>
+	</li>
+	<li class="@(ViewBag.pageName=="Extras"?"active":"dropdown1")">
+		<a asp-controller="Home" asp-action="Error">EXTRAS</a>
+		<ul class="dropdown2">
+	 		<li><a asp-controller="Home" asp-action="Error">CLASSIC BELL</a></li>
+			<li><a asp-controller="Home" asp-action="Error">BOTTLE CAGE</a></li>
+		<li><a asp-controller="Home" asp-action="Error">TRUCK GRIP</a></li>
+	 	</ul>
+	 </li>
+	<li class="dropdown1">
+		<a>REGISTRATION</a>
+		<ul class="dropdown2">
+			<li><a asp-controller="Auth" asp-action="Login">Log in</a></li>
+			<li><a asp-area="" asp-controller="Auth" asp-action="Logout">Log out</a></li>
+		</ul>
+	 </li>
+	<a class="shop" asp-controller="Home" asp-action="Cart"><img src="~/images/cart.png" alt="" /></a>
+</ul>

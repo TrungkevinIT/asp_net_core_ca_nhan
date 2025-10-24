@@ -1,0 +1,40 @@
+﻿@model IEnumerable<BaiTapQuayVideo.Models.Product> // danh sách products
+<h2 style="text-align: center">@ViewData["Title"]</h2>
+<button type="button" class="btn btn-success">
+    <a asp-area="Admin" asp-controller="Product" asp-action="CreateProduct"
+       style="color: white; font-weight: bold; text-decoration: none;">Create Product</a>
+</button>
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>ProductId</th>
+            <th>ProductName</th>
+            <th>Price</th>
+            <th>PromotionPrice</th>
+            <th>ProductDescription</th>
+            <th>TagName</th>
+            <th>CategoryId</th>
+            <th>ProductType</th>
+            <th>State</th>
+            <th>Hình ảnh</th>
+        </tr>
+    </thead>
+    <tbody>
+        @* vòng lặp để hiện ra sách product *@
+         @foreach (var sp in Model)
+        { 
+            <tr> 
+                <td>@sp.ProductId</td> 
+                <td>@sp.ProductName</td> 
+                <td>@sp.Price</td> 
+                <td>@sp.PromotionPrice</td> 
+                <td>@sp.ProductDescription</td> 
+                <td>@sp.TagName</td> 
+                <td>@sp.CategoryId</td> 
+                <td>@sp.ProductType</td> 
+                <td>@sp.States</td> 
+                <td><img src="~/images/@sp.ImageUrl" style="width:100px; height: auto;" /></td> 
+            </tr> 
+        } 
+    </tbody>
+</table>
