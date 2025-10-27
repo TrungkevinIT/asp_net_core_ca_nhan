@@ -11,7 +11,7 @@ namespace BaiTapQuayVideo.Database
         {
             _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
-        //hàm trả về đối tượng kết nối
+        //hàm trả về đối tượng kết noi
         public SqlConnection GetConnection()
         {
             return new SqlConnection(_connectionString);
