@@ -1,6 +1,9 @@
 ﻿using BaiTapQuayVideo.Database;
-
+using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
+// lấy chuỗi kết nối từ file appsetting.json
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+//đăng lý Dbcontext
 builder.Services.AddScoped<BaiTapQuayVideo.Services.ProductServices>();//dang ky dich vu DI
 builder.Services.AddScoped<BaiTapQuayVideo.Services.CategoryServices>();
 builder.Services.AddSession(options =>

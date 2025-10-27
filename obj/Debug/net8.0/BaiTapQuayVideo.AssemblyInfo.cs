@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BaiTapQuayVideo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5378325a112d4abfe23653d1b6810e69264b17c5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d1098b14e46779fe63d2ef53cd80229e036a9d2b")]
 [assembly: System.Reflection.AssemblyProductAttribute("BaiTapQuayVideo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BaiTapQuayVideo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
